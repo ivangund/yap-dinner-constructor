@@ -29,19 +29,19 @@ public class DinnerConstructor {
     }
 
     public ArrayList<ArrayList<String>> generateCombos(int count, ArrayList<String> dishTypes) {
-        ArrayList<ArrayList<String>> combos = new ArrayList<>();
+        ArrayList<ArrayList<String>> comboList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            ArrayList<String> combo = new ArrayList<>();
+            ArrayList<String> currentCombo = new ArrayList<>();
 
             for (String dishType : dishTypes) {
-                ArrayList<String> typeDishes = dishes.get(dishType);
-                combo.add(typeDishes.get(random.nextInt(typeDishes.size())));
+                ArrayList<String> currentTypeDishes = dishes.get(dishType);
+                currentCombo.add(currentTypeDishes.get(random.nextInt(currentTypeDishes.size())));
             }
 
-            combos.add(combo);
+            comboList.add(currentCombo);
         }
 
-        return combos;
+        return comboList;
     }
 }

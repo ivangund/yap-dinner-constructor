@@ -63,33 +63,33 @@ public class Main {
         System.out.println("\nНачинаем конструировать обед...");
 
         System.out.print("Введите количество наборов, которые нужно сгенерировать: ");
-        int combosCount = scanner.nextInt();
+        int comboCount = scanner.nextInt();
         scanner.nextLine();
 
-        ArrayList<String> dishTypes = new ArrayList<>();
+        ArrayList<String> dishTypeList = new ArrayList<>();
 
         System.out.println(
                 "Вводите типы блюда, разделяя символом переноса строки (enter). Для завершения ввода введите пустую строку");
         String dishName = scanner.nextLine();
         while (!dishName.isEmpty()) {
             if (dc.getDishes().containsKey(dishName)) {
-                dishTypes.add(dishName);
+                dishTypeList.add(dishName);
             } else {
                 System.out.println("Данного типа ещё нет в меню!");
             }
             dishName = scanner.nextLine();
         }
 
-        if (dishTypes.isEmpty()) {
+        if (dishTypeList.isEmpty()) {
             System.out.println("Не было введено ни одного типа!");
             return;
         }
 
-        ArrayList<ArrayList<String>> combos = dc.generateCombos(combosCount, dishTypes);
+        ArrayList<ArrayList<String>> comboList = dc.generateCombos(comboCount, dishTypeList);
 
-        for (int i = 0; i < combos.size(); i++) {
+        for (int i = 0; i < comboList.size(); i++) {
             System.out.println("- Комбо " + (i + 1) + ":");
-            for (String dish : combos.get(i)) {
+            for (String dish : comboList.get(i)) {
                 System.out.println("  - " + dish);
             }
         }
